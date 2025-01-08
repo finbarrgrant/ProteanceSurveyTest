@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vehicle Purchase Survey</title>
+    
+    <!-- SEO and Social Media Meta Tags -->
+    <meta name="description" content="Proteance Vehicle Purchase Survey">
+    <meta name="keywords" content="vehicle, survey, purchase">
+    <meta name="author" content="Proteance">
+    <meta property="og:title" content="Proteance Survey">
+    <meta property="og:description" content="Vehicle Purchase Survey">
+    <meta property="og:image" content="images/banner.jpg">
+    
+    <style>
+        /* Base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            padding: 16px;
+            background-color: #FFF9C4; /* Soft yellow background */
+            overflow-x: hidden;
+        }
+
+        /* Banner styles */
+        .banner-container {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .banner-image {
+            width: 400px;
+            height: auto;
+            display: block;
+            max-height: 200px;
+            object-fit: contain;
+            margin-left: 0;
+        }
+
+        /* Info Box styles */
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #4CAF50;
+        }
+
+        .info-title {
+            color: #2E7D32;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-bullets {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .info-bullets li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .info-bullets li:before {
+            content: "•";
+            color: #4CAF50;
+            font-size: 1.5em;
+            position: absolute;
+            left: 5px;
+            top: -2px;
+        }
+
+        /* Privacy Box styles */
+        .privacy-box {
+            background: linear-gradient(to right, #ffffff, #f8f9fa);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #2196F3;
+        }
+
+        .privacy-title {
+            color: #1565C0;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* New Slider styles */
+        .slider-container {
+            margin: 20px 0;
+        }
+
+        .slider-group {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .slider-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .slider-with-labels {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+
+        .slider-with-labels span {
+            font-size: 0.8rem;
+            color: #666;
+            width: 100px;
+            text-align: center;
+        }
+
+        .slider {
+            flex-grow: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+        }
+
+
+
+
+
+        /* Slider value and hover effects */
+        .slider-value {
+            text-align: center;
+            font-weight: 600;
+            color: #4CAF50;
+            font-size: 0.9rem;
+        }
+
+        .slider-group:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Contact Form Styles */
+        .contact-form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form-container h2 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+
+        .contact-intro {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .contact-method-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        /* Form input styles */
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"],
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Button styles */
+        .submit-contact-button,
+        .submit-preferences-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-contact-button:hover,
+        .submit-preferences-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Success message styles */
+        .success-content {
+            text-align: center;
+        }
+
+        .success-content h2 {
+            margin-bottom: 20px;
+            color: #2E7D32;
+        }
+
+        .final-success {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .final-success h2 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+
+        .final-success p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Loading indicator */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .banner-image {
+                width: 300px;
+                max-height: 150px;
+            }
+
+            .contact-method-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .slider-with-labels span {
+                width: 80px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Image -->
+    <div class="banner-container">
+        <img src="images/banner.jpg" alt="Proteance Survey Banner" class="banner-image">
+    </div>
+
+    <!-- Info Box -->
+    <div class="info-box">
+        <h2 class="info-title">🎯 Survey Purpose</h2>
+        <ul class="info-bullets">
+            <li>Help us understand why you chose not to purchase</li>
+            <li>Improve our services based on your feedback</li>
+            <li>Takes less than 2 minutes to complete</li>
+        </ul>
+    </div>
+
+    <!-- Privacy Box -->
+    <div class="privacy-box">
+        <h2 class="privacy-title">🔒 Privacy Guarantee</h2>
+        <div class="privacy-content">
+            <p class="privacy-main">Your privacy is important to us. We ensure:</p>
+            <ul class="privacy-bullets">
+                <li>Your responses remain confidential</li>
+                <li>Data is used only for service improvement</li>
+                <li>No sharing with third parties</li>
+            </ul>
+            <p class="privacy-footer">By continuing, you agree to our privacy policy.</p>
+        </div>
+    </div>
+
+
+
+        <!-- Header Input -->
+        <div class="header-textbox">
+            <label for="header-input">Please enter your name to begin:</label>
+            <input type="text" id="header-input" placeholder="Your name">
+            <small>This helps us personalize your experience</small>
+            <button onclick="startSurvey()">Start Survey</button>
+        </div>
+    
+        <!-- Primary Question with Sliders -->
+        <div class="question" id="primary-question" style="display: none;">
+            <h2>How applicable were these factors in your decision not to purchase a vehicle?</h2>
+            <div class="slider-container">
+                <div class="slider-group">
+                    <label>Financing Issues</label>
+                    <div class="slider-with-labels">
+                        <span>Not Applicable</span>
+                        <input type="range" id="financing-slider" min="0" max="100" value="0" class="slider">
+                        <span>Very Applicable</span>
+                    </div>
+                    <div class="slider-value" id="financing-value">0</div>
+                </div>
+    
+                <div class="slider-group">
+                    <label>Inventory Issues</label>
+                    <div class="slider-with-labels">
+                        <span>Not Applicable</span>
+                        <input type="range" id="inventory-slider" min="0" max="100" value="0" class="slider">
+                        <span>Very Applicable</span>
+                    </div>
+                    <div class="slider-value" id="inventory-value">0</div>
+                </div>
+    
+                <div class="slider-group">
+                    <label>Sales Experience Issues</label>
+                    <div class="slider-with-labels">
+                        <span>Not Applicable</span>
+                        <input type="range" id="sales-slider" min="0" max="100" value="0" class="slider">
+                        <span>Very Applicable</span>
+                    </div>
+                    <div class="slider-value" id="sales-value">0</div>
+                </div>
+            </div>
+            <button onclick="submitPrimary()">Continue</button>
+        </div>
+    
+        <!-- Follow-up Questions -->
+        <div id="financing-followup" class="follow-up-question" style="display: none;">
+            <h3>What was the specific financing issue?</h3>
+            <select id="financing-detail">
+                <option value="">Please select...</option>
+                <option value="rate">Interest rate too high</option>
+                <option value="down">Down payment required too high</option>
+                <option value="approval">Couldn't get approved</option>
+            </select>
+            <button onclick="submitFollowup('financing')">Submit</button>
+        </div>
+    
+        <div id="inventory-followup" class="follow-up-question" style="display: none;">
+            <h3>What inventory issue did you experience?</h3>
+            <select id="inventory-detail">
+                <option value="">Please select...</option>
+                <option value="model">Desired model not available</option>
+                <option value="color">Preferred color not available</option>
+                <option value="options">Specific features/options not available</option>
+            </select>
+            <button onclick="submitFollowup('inventory')">Submit</button>
+        </div>
+    
+        <div id="sales-followup" class="follow-up-question" style="display: none;">
+            <h3>What aspect of the sales experience was unsatisfactory?</h3>
+            <select id="sales-detail">
+                <option value="">Please select...</option>
+                <option value="pressure">Too much sales pressure</option>
+                <option value="knowledge">Lack of product knowledge</option>
+                <option value="service">Poor customer service</option>
+            </select>
+            <button onclick="submitFollowup('sales')">Submit</button>
+        </div>
+    
+        <!-- Loading and Success Messages -->
+        <div class="loading" id="loading">Submitting...</div>
+        <div class="success-message" id="success"></div>
+    
+        <!-- Hidden admin button -->
+        <button onclick="clearResponses()" class="admin-button" style="display: none;">Clear All Responses</button>
+    
+        <script>
+            // Initialize stored responses
+            let surveyResponses = loadStoredResponses();
+    
+            // Initialize sliders when page loads
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize all sliders
+                ['financing', 'inventory', 'sales'].forEach(type => {
+                    const slider = document.getElementById(`${type}-slider`);
+                    const value = document.getElementById(`${type}-value`);
+                    
+                    // Update value display on slider change
+                    slider.addEventListener('input', function() {
+                        value.textContent = this.value;
+                        updateSliderColor(this);
+                    });
+                    
+                    // Initialize slider color
+                    updateSliderColor(slider);
+                });
+            });
+
+
+
+
+        // Function to update slider color based on value
+        function updateSliderColor(slider) {
+            const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+            slider.style.background = `linear-gradient(to right, #4CAF50 0%, #4CAF50 ${value}%, #ddd ${value}%, #ddd 100%)`;
+        }
+
+        // Load stored responses from localStorage
+        function loadStoredResponses() {
+            const stored = localStorage.getItem('surveyResponses');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // Start the survey
+        function startSurvey() {
+            const name = document.getElementById('header-input').value;
+            
+            if (!name) {
+                alert('Please enter your name before continuing');
+                return;
+            }
+
+            // Hide intro elements
+            document.querySelector('.banner-container').style.display = 'none';
+            document.querySelector('.info-box').style.display = 'none';
+            document.querySelector('.privacy-box').style.display = 'none';
+            document.querySelector('.header-textbox').style.display = 'none';
+            
+            // Show the survey question
+            document.getElementById('primary-question').style.display = 'block';
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Submit primary survey responses
+        function submitPrimary() {
+            const financingValue = document.getElementById('financing-slider').value;
+            const inventoryValue = document.getElementById('inventory-slider').value;
+            const salesValue = document.getElementById('sales-slider').value;
+            
+            // Find the highest rated factor
+            const values = [
+                { type: 'financing', value: parseInt(financingValue) },
+                { type: 'inventory', value: parseInt(inventoryValue) },
+                { type: 'sales', value: parseInt(salesValue) }
+            ];
+            
+            const highestFactor = values.reduce((prev, current) => 
+                (prev.value > current.value) ? prev : current
+            );
+            
+            // Only proceed if at least one factor has a value above 0
+            if (highestFactor.value === 0) {
+                alert('Please rate at least one factor');
+                return;
+            }
+
+            // Store all slider values
+            window.sliderResponses = {
+                financing: financingValue,
+                inventory: inventoryValue,
+                sales: salesValue
+            };
+
+            // Show follow-up question for the highest rated factor
+            document.getElementById('primary-question').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('primary-question').style.display = 'none';
+                document.getElementById(`${highestFactor.type}-followup`).style.display = 'block';
+                void document.getElementById(`${highestFactor.type}-followup`).offsetWidth;
+                document.getElementById(`${highestFactor.type}-followup`).style.opacity = '1';
+            }, 200);
+        }
+
+        // Submit follow-up response and show contact form
+        function submitFollowup(type) {
+            const detail = document.getElementById(`${type}-detail`).value;
+            const name = document.getElementById('header-input').value;
+            
+            if (!detail) {
+                alert('Please select an option');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+
+            // Hide loading and show success with stay connected options
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById(`${type}-followup`).style.display = 'none';
+            document.getElementById('success').innerHTML = `
+                <div class="success-content">
+                    <h2>Thank you for your feedback!</h2>
+                    
+                    <div class="follow-up-box" style="margin-top: 20px;">
+                        <h2 class="follow-up-title">📬 Stay Connected</h2>
+                        <div class="follow-up-content">
+                            <p class="follow-up-intro">We value your input! Please select any options that interest you:</p>
+                            
+                            <div class="checkbox-container">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="interview-checkbox" class="custom-checkbox">
+                                    <label for="interview-checkbox">
+                                        <span class="checkbox-title">Follow-up Interview</span>
+                                        <span class="checkbox-description">Participate in a brief interview about your experience (compensation provided)</span>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="offers-checkbox" class="custom-checkbox">
+                                    <label for="offers-checkbox">
+                                        <span class="checkbox-title">Future Offers</span>
+                                        <span class="checkbox-description">Receive updates about special deals and new inventory</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="submitPreferences()" class="submit-preferences-button">Submit Preferences</button>
+                </div>
+            `;
+            document.getElementById('success').style.display = 'block';
+        }
+
+        // Handle contact form submission
+        function submitPreferences() {
+            const wantsInterview = document.getElementById('interview-checkbox').checked;
+            const wantsOffers = document.getElementById('offers-checkbox').checked;
+            
+            if (wantsInterview) {
+                // Show contact details form
+                document.getElementById('success').innerHTML = `
+                    <div class="contact-form-container">
+                        <h2>Contact Details</h2>
+                        <p class="contact-intro">Please provide your preferred contact information for the follow-up interview.</p>
+                        
+                        <form id="contact-form" onsubmit="submitContactDetails(event)">
+                            <div class="form-group">
+                                <label>Preferred Contact Method:</label>
+                                <div class="contact-method-options">
+                                    <label class="radio-label">
+                                        <input type="radio" name="contactMethod" value="email" required>
+                                        <span>Email</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="contactMethod" value="phone">
+                                        <span>Phone</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="contactMethod" value="mail">
+                                        <span>Mail</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="contact-details"></div>
+
+                            <div class="form-group">
+                                <label>Preferred Interview Date:</label>
+                                <input 
+                                    type="date" 
+                                    id="preferred-date" 
+                                    required
+                                    min="${new Date().toISOString().split('T')[0]}"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Preferred Time:</label>
+                                <select id="preferred-time" required>
+                                    <option value="">Select a time...</option>
+                                    <option value="morning">Morning (9AM - 12PM)</option>
+                                    <option value="afternoon">Afternoon (12PM - 5PM)</option>
+                                    <option value="evening">Evening (5PM - 8PM)</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="submit-contact-button">Submit Contact Details</button>
+                        </form>
+                    </div>
+                `;
+
+                // Add event listener for contact method change
+                document.getElementsByName('contactMethod').forEach(radio => {
+                    radio.addEventListener('change', updateContactFields);
+                });
+            } else {
+                // Proceed with normal submission if no interview requested
+                submitFinalResponse(wantsInterview, wantsOffers);
+            }
+        }
+
+        // Update contact fields based on selected method
+        function updateContactFields() {
+            const method = document.querySelector('input[name="contactMethod"]:checked').value;
+            const contactDetails = document.getElementById('contact-details');
+            
+            let fieldsHTML = '';
+            switch(method) {
+                case 'email':
+                    fieldsHTML = `
+                        <div class="form-group">
+                            <label>Email Address:</label>
+                            <input type="email" id="email" required placeholder="your@email.com">
+                        </div>
+                    `;
+                    break;
+                case 'phone':
+                    fieldsHTML = `
+                        <div class="form-group">
+                            <label>Phone Number:</label>
+                            <input type="tel" id="phone" required placeholder="(XXX) XXX-XXXX">
+                        </div>
+                    `;
+                    break;
+                case 'mail':
+                    fieldsHTML = `
+                        <div class="form-group">
+                            <label>Mailing Address:</label>
+                            <input type="text" id="street" required placeholder="Street Address">
+                            <input type="text" id="city" required placeholder="City">
+                            <input type="text" id="state" required placeholder="State">
+                            <input type="text" id="zip" required placeholder="ZIP Code">
+                        </div>
+                    `;
+                    break;
+            }
+            contactDetails.innerHTML = fieldsHTML;
+        }
+
+        // Handle final contact details submission
+        function submitContactDetails(event) {
+            event.preventDefault();
+            
+            const contactMethod = document.querySelector('input[name="contactMethod"]:checked').value;
+            const preferredDate = document.getElementById('preferred-date').value;
+            const preferredTime = document.getElementById('preferred-time').value;
+            
+            // Gather contact details based on method
+            let contactDetails = {};
+            switch(contactMethod) {
+                case 'email':
+                    contactDetails = {
+                        email: document.getElementById('email').value
+                    };
+                    break;
+                case 'phone':
+                    contactDetails = {
+                        phone: document.getElementById('phone').value
+                    };
+                    break;
+                case 'mail':
+                    contactDetails = {
+                        street: document.getElementById('street').value,
+                        city: document.getElementById('city').value,
+                        state: document.getElementById('state').value,
+                        zip: document.getElementById('zip').value
+                    };
+                    break;
+            }
+
+            // Create final survey data
+            const surveyData = {
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('header-input').value,
+                sliderResponses: window.sliderResponses,
+                primaryReason: document.getElementById('main-reason').value,
+                followupResponse: document.getElementById(`${document.getElementById('main-reason').value}-detail`).value,
+                followUpPreferences: {
+                    interestedInInterview: true,
+                    interestedInOffers: document.getElementById('offers-checkbox').checked,
+                    contactMethod: contactMethod,
+                    contactDetails: contactDetails,
+                    preferredDate: preferredDate,
+                    preferredTime: preferredTime
+                }
+            };
+
+            // Store response and show final message
+            storeResponse(surveyData);
+            showFinalMessage();
+        }
+
+        // Show final thank you message
+        function showFinalMessage() {
+            document.getElementById('success').innerHTML = `
+                <div class="final-success">
+                    <h2>Thank you for your responses!</h2>
+                    <p>We will contact you according to your preferences.</p>
+                    <button onclick="downloadAllResponses()" class="download-all-button">Download Survey Responses</button>
+                </div>
+            `;
+        }
+
+        // Store response in localStorage and update CSV
+        function storeResponse(response) {
+            surveyResponses.push(response);
+            localStorage.setItem('surveyResponses', JSON.stringify(surveyResponses));
+            downloadAllResponses();
+        }
+
+        // Download all responses as CSV
+        function downloadAllResponses() {
+            if (surveyResponses.length === 0) {
+                alert('No responses to download');
+                return;
+            }
+
+            const headers = [
+                'Timestamp',
+                'Name',
+                'Financing Rating',
+                'Inventory Rating',
+                'Sales Rating',
+                'Primary Factor',
+                'Followup Response',
+                'Interested in Interview',
+                'Contact Method',
+                'Contact Details',
+                'Preferred Date',
+                'Preferred Time',
+                'Interested in Offers'
+            ];
+
+            const csvRows = [headers.join(',')];
+            
+            surveyResponses.forEach(response => {
+                const row = [
+                    response.timestamp,
+                    escapeCsvValue(response.name),
+                    response.sliderResponses.financing,
+                    response.sliderResponses.inventory,
+                    response.sliderResponses.sales,
+                    escapeCsvValue(response.primaryReason),
+                    escapeCsvValue(response.followupResponse),
+                    response.followUpPreferences?.interestedInInterview || false,
+                    response.followUpPreferences?.contactMethod || '',
+                    escapeCsvValue(JSON.stringify(response.followUpPreferences?.contactDetails || {})),
+                    response.followUpPreferences?.preferredDate || '',
+                    response.followUpPreferences?.preferredTime || '',
+                    response.followUpPreferences?.interestedInOffers || false
+                ];
+                csvRows.push(row.join(','));
+            });
+
+            const csvContent = csvRows.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const fileName = 'ProteanceSurveyResponses.csv';
+            
+            if (navigator.msSaveBlob) {
+                navigator.msSaveBlob(blob, fileName);
+            } else {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.setAttribute('download', fileName);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        // Helper function to escape CSV values
+        function escapeCsvValue(value) {
+            if (value === null || value === undefined) {
+                return '""';
+            }
+            return `"${String(value).replace(/"/g, '""')}"`;
+        }
+
+        // Function to clear all responses (for testing)
+        function clearResponses() {
+            surveyResponses = [];
+            localStorage.removeItem('surveyResponses');
+            console.log('All responses cleared');
+        }
+    </script>
+</body>
+</html>
